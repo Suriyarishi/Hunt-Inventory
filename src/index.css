@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Backgrounds & Surfaces */
+    --background: 210 40% 98%; /* #F8FAFC */
+    --foreground: 222 47% 11%; /* #0F172A */
+    
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 222 47% 11%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Brand Primary */
+    --primary: 155 77% 43%; /* #19C37D */
+    --primary-foreground: 0 0% 100%;
+    
+    --primary-light: 151 100% 95%; /* #E8FFF4 */
+    --primary-soft: 154 85% 91%; /* #D7FAEB */
+
+    /* Secondary */
+    --secondary: 219 100% 96%; /* #EEF4FF */
+    --secondary-foreground: 222 47% 11%;
+    
+    /* Accents */
+    --accent-blue: 227 100% 71%; /* #6C8DFF */
+    --accent-purple: 255 92% 76%; /* #A78BFA */
+
+    --muted: 219 100% 96%; 
+    --muted-foreground: 215 16% 47%; /* Text Secondary #64748B */
+
+    --accent: 219 100% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    /* Feedback */
+    --success: 155 77% 43%; /* #19C37D */
+    --warning: 40 91% 61%; /* #F5B942 */
+    --danger: 0 100% 68%; /* #FF5D5D */
+    --destructive: 0 100% 68%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 214 32% 96%; /* Extremely subtle border */
+    --input: 214 32% 91%;
+    --ring: 155 77% 43%;
+
+    /* Radiuses */
+    --radius: 1rem;
+    --radius-card: 1.5rem; /* 24px */
+    --radius-button: 1rem; /* 16px */
+    --radius-input: 1rem; /* 16px */
+    --radius-modal: 2rem; /* 32px */
+  }
+
+  .dark {
+    /* Backgrounds & Surfaces */
+    --background: 220 41% 7%; /* #0B101A */
+    --foreground: 210 40% 98%; /* #F8FAFC */
+    
+    --card: 221 33% 13%; /* #161D2C */
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 221 33% 13%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Brand Primary */
+    --primary: 155 77% 43%; 
+    --primary-foreground: 0 0% 100%;
+    
+    --primary-light: 155 77% 15%; 
+    --primary-soft: 155 77% 20%; 
+
+    /* Secondary */
+    --secondary: 217 33% 17%; /* #1E293B */
+    --secondary-foreground: 210 40% 98%;
+    
+    /* Accents */
+    --accent-blue: 227 100% 71%; 
+    --accent-purple: 255 92% 76%; 
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 25% 65%; /* #94A3B8 */
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Feedback */
+    --success: 155 77% 43%; 
+    --warning: 40 91% 61%; 
+    --danger: 0 100% 68%; 
+    --destructive: 0 100% 68%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 155 77% 43%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    /* Hide scrollbars everywhere - native mobile feel */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  *::-webkit-scrollbar {
+    display: none;
+  }
+  html, body, #root {
+    height: 100%;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  body {
+    overflow: hidden;
+  }
+}
