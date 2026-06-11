@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { mockHolds, mockWaitlist } from '../constants/mockData';
-import { Lock, Clock, Plus, BarChart3, Users, ChevronRight, ArrowLeft } from 'lucide-react';
+import { Lock, Clock, Plus, BarChart3, Users, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -17,9 +17,6 @@ export default function HoldHubPage() {
   return (
     <div className="min-h-screen bg-background pb-24 pt-safe flex flex-col">
       <div className="p-4 bg-background z-20 sticky top-0 border-b border-border/50 flex items-center justify-between gap-2">
-        <Button variant="ghost" size="icon" className="rounded-full hover:bg-secondary/50 -ml-2 shrink-0" onClick={() => navigate(-1)}>
-          <ArrowLeft className="w-5 h-5" />
-        </Button>
         <h1 className="text-2xl font-bold text-foreground flex items-center gap-2 flex-1">
            <Lock className="w-6 h-6 text-primary" /> Holds
         </h1>

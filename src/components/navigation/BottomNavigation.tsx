@@ -1,12 +1,12 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { Home, LayoutGrid, Users, Bell, User } from 'lucide-react';
+import { Home, Building, Lock, TrendingUp, User } from 'lucide-react';
 import { cn } from '@/utils';
 
 const navItems = [
   { icon: Home, label: 'Home', path: '/dashboard' },
-  { icon: LayoutGrid, label: 'Inventory', path: '/inventory' },
-  { icon: Users, label: 'CRM', path: '/crm' },
-  { icon: Bell, label: 'Alerts', path: '/notifications' },
+  { icon: Building, label: 'Projects', path: '/inventory' },
+  { icon: Lock, label: 'Holds', path: '/holds' },
+  { icon: TrendingUp, label: 'Insights', path: '/insights' },
   { icon: User, label: 'Profile', path: '/profile' },
 ];
 

@@ -1,11 +1,12 @@
 import { useEffect, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 import { cn } from '@/utils';
 
 /**
  * BottomSheet — a fully in-frame bottom drawer.
- * Uses absolute positioning so it stays inside the phone mockup container
- * instead of escaping to the browser viewport like shadcn's Sheet does.
+ * Uses React Portal to render inside the bezel-portal-root z-100 container
+ * so it overlays the bottom navigation bar and status bar cleanly.
  */
 interface BottomSheetProps {
   open: boolean;
@@ -23,7 +24,9 @@ export function BottomSheet({ open, onOpenChange, title, children, height = '85%
     return () => {};
   }, [open]);
 
-  return (
+  const portalRoot = document.getElementById('bezel-portal-root');
+
+  const content = (
     <>
       {/* Backdrop */}
       <div
@@ -69,4 +72,10 @@ export function BottomSheet({ open, onOpenChange, title, children, height = '85%
       </div>
     </>
   );
+
+  if (!portalRoot) {
+    return content;
+  }
+
+  return createPortal(content, portalRoot);
 }

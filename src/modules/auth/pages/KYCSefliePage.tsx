@@ -21,9 +21,9 @@ function OvalGuide({ state }: { state: CameraState }) {
       <defs>
         {/* Animated gradient for scanning state */}
         <linearGradient id="scanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#19C37D" stopOpacity="1" />
-          <stop offset="50%" stopColor="#19C37D" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#19C37D" stopOpacity="1" />
+          <stop offset="0%" stopColor="#4CA771" stopOpacity="1" />
+          <stop offset="50%" stopColor="#4CA771" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#4CA771" stopOpacity="1" />
         </linearGradient>
 
         {/* Glow filter */}
@@ -40,12 +40,12 @@ function OvalGuide({ state }: { state: CameraState }) {
       {!isVerified && (
         <g opacity={isActive ? 0.4 : 0.6}>
           {/* Head */}
-          <circle cx="110" cy="108" r="34" fill="none" stroke="#19C37D" strokeWidth="2.5" />
+          <circle cx="110" cy="108" r="34" fill="none" stroke="#4CA771" strokeWidth="2.5" />
           {/* Body/shoulders */}
           <path
             d="M55 240 Q55 190 110 185 Q165 190 165 240"
             fill="none"
-            stroke="#19C37D"
+            stroke="#4CA771"
             strokeWidth="2.5"
             strokeLinecap="round"
           />
@@ -55,12 +55,12 @@ function OvalGuide({ state }: { state: CameraState }) {
       {/* Verified checkmark */}
       {isVerified && (
         <g>
-          <circle cx="110" cy="140" r="48" fill="#19C37D" opacity="0.15" />
-          <circle cx="110" cy="140" r="36" fill="#19C37D" opacity="0.3" />
+          <circle cx="110" cy="140" r="48" fill="#4CA771" opacity="0.15" />
+          <circle cx="110" cy="140" r="36" fill="#4CA771" opacity="0.3" />
           <path
             d="M88 140 L104 156 L134 122"
             fill="none"
-            stroke="#19C37D"
+            stroke="#4CA771"
             strokeWidth="4"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -76,7 +76,7 @@ function OvalGuide({ state }: { state: CameraState }) {
         rx="90"
         ry="118"
         fill="none"
-        stroke={isVerified ? '#19C37D' : isActive ? 'url(#scanGrad)' : '#19C37D'}
+        stroke={isVerified ? '#4CA771' : isActive ? 'url(#scanGrad)' : '#4CA771'}
         strokeWidth={isVerified ? 3 : 2}
         strokeDasharray={isActive ? '12 6' : '10 8'}
         strokeLinecap="round"
@@ -91,13 +91,13 @@ function OvalGuide({ state }: { state: CameraState }) {
       {!isVerified && (
         <>
           {/* Top-left */}
-          <path d="M32 100 L32 80 L52 80" fill="none" stroke="#19C37D" strokeWidth="3" strokeLinecap="round" />
+          <path d="M32 100 L32 80 L52 80" fill="none" stroke="#4CA771" strokeWidth="3" strokeLinecap="round" />
           {/* Top-right */}
-          <path d="M188 100 L188 80 L168 80" fill="none" stroke="#19C37D" strokeWidth="3" strokeLinecap="round" />
+          <path d="M188 100 L188 80 L168 80" fill="none" stroke="#4CA771" strokeWidth="3" strokeLinecap="round" />
           {/* Bottom-left */}
-          <path d="M32 180 L32 200 L52 200" fill="none" stroke="#19C37D" strokeWidth="3" strokeLinecap="round" />
+          <path d="M32 180 L32 200 L52 200" fill="none" stroke="#4CA771" strokeWidth="3" strokeLinecap="round" />
           {/* Bottom-right */}
-          <path d="M188 180 L188 200 L168 200" fill="none" stroke="#19C37D" strokeWidth="3" strokeLinecap="round" />
+          <path d="M188 180 L188 200 L168 200" fill="none" stroke="#4CA771" strokeWidth="3" strokeLinecap="round" />
         </>
       )}
 
@@ -108,7 +108,7 @@ function OvalGuide({ state }: { state: CameraState }) {
           y1="140"
           x2="198"
           y2="140"
-          stroke="#19C37D"
+          stroke="#4CA771"
           strokeWidth="1.5"
           strokeLinecap="round"
           opacity="0.8"
@@ -128,7 +128,7 @@ function ScanDots() {
       {[0, 1, 2].map((i) => (
         <div
           key={i}
-          className="w-1.5 h-1.5 rounded-full bg-[#19C37D]"
+          className="w-1.5 h-1.5 rounded-full bg-[#4CA771]"
           style={{ animation: `bounce 1.2s ease-in-out ${i * 0.2}s infinite` }}
         />
       ))}
@@ -194,7 +194,7 @@ export default function KYCSefliePage() {
     ? 'Analyzing...'
     : '✓ Identity Matched';
 
-  const badgeBg = isVerified ? '#19C37D' : 'rgba(0,0,0,0.75)';
+  const badgeBg = isVerified ? '#4CA771' : 'rgba(0,0,0,0.75)';
 
   return (
     <>
@@ -225,7 +225,7 @@ export default function KYCSefliePage() {
         .animate-fade-in-up { animation: fade-in-up 0.4s ease-out forwards; }
       `}</style>
 
-      <div className="flex-1 flex flex-col bg-[#eef7f2] overflow-y-auto">
+      <div className="flex-1 flex flex-col bg-[#EAF9E7] overflow-y-auto">
 
         {/* ── Header ─────────────────────────────────────────────────── */}
         <div className="px-5 pt-5 pb-3 flex items-center gap-3">
@@ -233,11 +233,11 @@ export default function KYCSefliePage() {
             onClick={() => navigate(-1)}
             className="w-9 h-9 rounded-xl bg-white/80 border border-white shadow-sm flex items-center justify-center"
           >
-            <ArrowLeft className="w-4 h-4 text-[#1a1a1a]" strokeWidth={2.5} />
+            <ArrowLeft className="w-4 h-4 text-[#013237]" strokeWidth={2.5} />
           </button>
           <div>
-            <p className="text-[15px] font-extrabold text-[#1a1a1a] leading-none">KYC Selfie</p>
-            <p className="text-[11px] font-bold text-[#19C37D] uppercase tracking-widest mt-0.5">
+            <p className="text-[15px] font-extrabold text-[#013237] leading-none">KYC Selfie</p>
+            <p className="text-[11px] font-bold text-[#4CA771] uppercase tracking-widest mt-0.5">
               Step 5 of 5
             </p>
           </div>
@@ -245,13 +245,13 @@ export default function KYCSefliePage() {
 
         {/* ── Title block ────────────────────────────────────────────── */}
         <div className="px-5 pt-2 pb-4 text-center">
-          <p className="text-[10px] font-extrabold text-[#19C37D] uppercase tracking-[0.2em] mb-1">
+          <p className="text-[10px] font-extrabold text-[#4CA771] uppercase tracking-[0.2em] mb-1">
             FINAL CHECK
           </p>
-          <h1 className="text-[22px] font-extrabold text-[#1a1a1a] leading-tight mb-2">
+          <h1 className="text-[22px] font-extrabold text-[#013237] leading-tight mb-2">
             {isVerified ? 'Identity Verified!' : 'Take a quick selfie'}
           </h1>
-          <p className="text-[13px] text-[#5a6a62] leading-relaxed max-w-[280px] mx-auto">
+          <p className="text-[13px] text-[#013237] leading-relaxed max-w-[280px] mx-auto">
             {isVerified
               ? 'Your biometric portrait has been securely matched and recorded.'
               : 'We match your selfie with your Aadhaar photo. Only takes 2 seconds. Photo never leaves Hunt Property servers.'}
@@ -272,11 +272,11 @@ export default function KYCSefliePage() {
             {isScanning && (
               <>
                 <div
-                  className="absolute inset-8 rounded-full border-2 border-[#19C37D]/40"
+                  className="absolute inset-8 rounded-full border-2 border-[#4CA771]/40"
                   style={{ animation: 'pulse-ring 1.4s ease-out infinite' }}
                 />
                 <div
-                  className="absolute inset-8 rounded-full border-2 border-[#19C37D]/30"
+                  className="absolute inset-8 rounded-full border-2 border-[#4CA771]/30"
                   style={{ animation: 'pulse-ring 1.4s ease-out 0.4s infinite' }}
                 />
               </>
@@ -303,7 +303,7 @@ export default function KYCSefliePage() {
             {isAnalyzing && (
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#1a2e22]">
                 <div
-                  className="h-full bg-[#19C37D] transition-all duration-75"
+                  className="h-full bg-[#4CA771] transition-all duration-75"
                   style={{ width: `${analyzeProgress}%` }}
                 />
               </div>
@@ -312,9 +312,9 @@ export default function KYCSefliePage() {
             {/* Verified celebration overlay */}
             {isVerified && (
               <div className="absolute inset-0 flex flex-col items-center justify-end pb-5 animate-fade-in-up">
-                <div className="bg-[#19C37D]/20 backdrop-blur-sm rounded-2xl px-5 py-2 flex items-center gap-2 border border-[#19C37D]/30">
-                  <ShieldCheck className="w-4 h-4 text-[#19C37D]" />
-                  <span className="text-[12px] font-bold text-[#19C37D]">Biometric Locked</span>
+                <div className="bg-[#4CA771]/20 backdrop-blur-sm rounded-2xl px-5 py-2 flex items-center gap-2 border border-[#4CA771]/30">
+                  <ShieldCheck className="w-4 h-4 text-[#4CA771]" />
+                  <span className="text-[12px] font-bold text-[#4CA771]">Biometric Locked</span>
                 </div>
               </div>
             )}
@@ -322,7 +322,7 @@ export default function KYCSefliePage() {
             {/* Privacy badge — bottom right corner (Trust) */}
             {isIdle && (
               <div className="absolute bottom-3 right-3 bg-black/60 rounded-xl px-2.5 py-1.5 flex items-center gap-1.5">
-                <ShieldCheck className="w-3 h-3 text-[#19C37D]" />
+                <ShieldCheck className="w-3 h-3 text-[#4CA771]" />
                 <span className="text-[10px] text-white/80 font-semibold">On-device only</span>
               </div>
             )}
@@ -341,7 +341,7 @@ export default function KYCSefliePage() {
         {(isIdle || isScanning) && (
           <div className="px-5 mb-4">
             <div className="bg-white rounded-2xl px-4 py-4 border border-white shadow-sm">
-              <p className="text-[13px] font-extrabold text-[#1a1a1a] mb-3">
+              <p className="text-[13px] font-extrabold text-[#013237] mb-3">
                 Tips for a good capture
               </p>
               {[
@@ -351,8 +351,8 @@ export default function KYCSefliePage() {
                 'Hold the phone steady',
               ].map((tip, i) => (
                 <div key={i} className="flex items-center gap-2.5 py-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#19C37D] shrink-0" />
-                  <p className="text-[13px] text-[#5a6a62]">{tip}</p>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#4CA771] shrink-0" />
+                  <p className="text-[13px] text-[#013237]">{tip}</p>
                 </div>
               ))}
             </div>
@@ -364,8 +364,8 @@ export default function KYCSefliePage() {
           <div className="px-5 mb-4 animate-fade-in-up">
             <div className="bg-white rounded-2xl px-4 py-4 border border-white shadow-sm">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full border-2 border-[#19C37D]/30 border-t-[#19C37D] animate-spin" />
-                <p className="text-[13px] font-extrabold text-[#1a1a1a]">Running biometric checks</p>
+                <div className="w-8 h-8 rounded-full border-2 border-[#4CA771]/30 border-t-[#4CA771] animate-spin" />
+                <p className="text-[13px] font-extrabold text-[#013237]">Running biometric checks</p>
               </div>
               {[
                 { label: 'Face detection', done: analyzeProgress > 25 },
@@ -375,12 +375,12 @@ export default function KYCSefliePage() {
               ].map((step, i) => (
                 <div key={i} className="flex items-center gap-2.5 py-1.5">
                   <div className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
-                    step.done ? 'bg-[#19C37D]' : 'bg-[#e0ede6]'
+                    step.done ? 'bg-[#4CA771]' : 'bg-[#C0E6BA]'
                   }`}>
                     {step.done && <CheckCircle2 className="w-3 h-3 text-white" />}
                   </div>
                   <p className={`text-[12px] font-semibold transition-colors duration-300 ${
-                    step.done ? 'text-[#19C37D]' : 'text-[#9ca3af]'
+                    step.done ? 'text-[#4CA771]' : 'text-[#9ca3af]'
                   }`}>{step.label}</p>
                 </div>
               ))}
@@ -391,14 +391,14 @@ export default function KYCSefliePage() {
         {/* Verified summary */}
         {isVerified && (
           <div className="px-5 mb-4 animate-fade-in-up">
-            <div className="bg-[#f0fff8] rounded-2xl px-4 py-4 border border-[#19C37D]/25">
+            <div className="bg-[#EAF9E7] rounded-2xl px-4 py-4 border border-[#4CA771]/25">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#19C37D]/20 flex items-center justify-center shrink-0">
-                  <ShieldCheck className="w-5 h-5 text-[#19C37D]" />
+                <div className="w-10 h-10 rounded-full bg-[#4CA771]/20 flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-5 h-5 text-[#4CA771]" />
                 </div>
                 <div>
-                  <p className="text-[13px] font-extrabold text-[#1a1a1a]">Biometric Verification Complete</p>
-                  <p className="text-[11px] text-[#5a6a62] mt-0.5">Your portrait was matched against Aadhaar records with 98.7% confidence.</p>
+                  <p className="text-[13px] font-extrabold text-[#013237]">Biometric Verification Complete</p>
+                  <p className="text-[11px] text-[#013237] mt-0.5">Your portrait was matched against Aadhaar records with 98.7% confidence.</p>
                 </div>
               </div>
             </div>
@@ -409,37 +409,37 @@ export default function KYCSefliePage() {
         <div className="flex-1" />
 
         {/* ── CTA Button (Fitts's Law — large, full-width, bottom) ─── */}
-        <div className="px-5 py-5 border-t border-[#d4eadb]/60 bg-[#eef7f2]">
+        <div className="px-5 py-5 border-t border-[#d4eadb]/60 bg-[#EAF9E7]">
           {isIdle && (
             <button
               onClick={handleOpenCamera}
-              className="w-full h-14 rounded-full bg-[#19C37D] text-white font-extrabold text-[15px] shadow-lg shadow-[#19C37D]/30 active:scale-95 transition-transform flex items-center justify-center gap-2"
+              className="w-full h-14 rounded-full bg-[#4CA771] text-white font-extrabold text-[15px] shadow-lg shadow-[#4CA771]/30 active:scale-95 transition-transform flex items-center justify-center gap-2"
             >
               Open Camera
             </button>
           )}
 
           {isScanning && (
-            <div className="w-full h-14 rounded-full bg-[#0d1a14] flex items-center justify-center gap-3 border border-[#19C37D]/30">
+            <div className="w-full h-14 rounded-full bg-[#0d1a14] flex items-center justify-center gap-3 border border-[#4CA771]/30">
               <ScanDots />
-              <span className="text-[#19C37D] font-bold text-[14px]">Scanning face...</span>
+              <span className="text-[#4CA771] font-bold text-[14px]">Scanning face...</span>
             </div>
           )}
 
           {isAnalyzing && (
-            <div className="w-full h-14 rounded-full bg-[#19C37D]/10 flex items-center justify-center gap-3 border border-[#19C37D]/30">
+            <div className="w-full h-14 rounded-full bg-[#4CA771]/10 flex items-center justify-center gap-3 border border-[#4CA771]/30">
               <div className="relative w-5 h-5">
                 <svg className="w-5 h-5 -rotate-90" viewBox="0 0 20 20">
                   <circle cx="10" cy="10" r="8" fill="none" stroke="#d4eadb" strokeWidth="2" />
                   <circle
                     cx="10" cy="10" r="8"
-                    fill="none" stroke="#19C37D" strokeWidth="2"
+                    fill="none" stroke="#4CA771" strokeWidth="2"
                     strokeDasharray={`${(analyzeProgress / 100) * 50.3} 50.3`}
                     strokeLinecap="round"
                   />
                 </svg>
               </div>
-              <span className="text-[#19C37D] font-bold text-[14px]">
+              <span className="text-[#4CA771] font-bold text-[14px]">
                 Analyzing biometrics... {analyzeProgress}%
               </span>
             </div>
@@ -448,7 +448,7 @@ export default function KYCSefliePage() {
           {isVerified && (
             <button
               onClick={handleComplete}
-              className="w-full h-14 rounded-full bg-[#19C37D] text-white font-extrabold text-[15px] shadow-lg shadow-[#19C37D]/30 active:scale-95 transition-transform flex items-center justify-center gap-2"
+              className="w-full h-14 rounded-full bg-[#4CA771] text-white font-extrabold text-[15px] shadow-lg shadow-[#4CA771]/30 active:scale-95 transition-transform flex items-center justify-center gap-2"
             >
               <CheckCircle2 className="w-5 h-5" />
               Complete KYC Selfie

@@ -12,15 +12,15 @@ export default function CompareProjectsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background pt-safe flex flex-col">
-      <div className="p-4 border-b border-border/50 flex items-center gap-4 bg-background z-10 sticky top-0">
+    <div className="h-full bg-background flex flex-col relative overflow-hidden">
+      <div className="p-4 border-b border-border/50 flex items-center gap-4 bg-background z-10 shrink-0">
         <Button variant="ghost" size="icon" className="rounded-full hover:bg-secondary/50 -ml-2" onClick={() => navigate(-1)}>
           <ArrowLeft className="w-5 h-5" />
         </Button>
         <h1 className="text-xl font-bold">Compare Projects</h1>
       </div>
 
-      <ScrollArea className="flex-1 w-full whitespace-nowrap">
+      <ScrollArea className="flex-1 w-full whitespace-nowrap overflow-hidden">
         <div className="flex w-max p-6 gap-6">
           {/* Label Column */}
           <div className="w-24 space-y-8 pt-32 text-xs font-semibold text-muted-foreground uppercase tracking-wider sticky left-0 bg-background/90 backdrop-blur-sm z-10 p-2 shadow-[4px_0_12px_rgba(0,0,0,0.02)]">

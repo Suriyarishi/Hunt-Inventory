@@ -13,9 +13,9 @@ export default function InventoryHomePage() {
   const [search, setSearch] = useState('');
 
   return (
-    <div className="min-h-screen bg-background pb-20">
-      <div className="sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-border/50 p-4 animate-slide-up-fade">
-        <h1 className="text-2xl font-bold text-foreground mb-4">Inventory</h1>
+    <div className="h-full bg-background flex flex-col relative overflow-hidden">
+      <div className="bg-background border-b border-border/50 p-4 shrink-0 z-30">
+        <h1 className="text-2xl font-bold text-foreground mb-4">Projects</h1>
         <div className="flex gap-2">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -56,7 +56,7 @@ export default function InventoryHomePage() {
         </div>
       </div>
 
-      <div className="p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 pb-8">
         {mockProjects.map((project, i) => (
           <Card 
             key={project.id} 

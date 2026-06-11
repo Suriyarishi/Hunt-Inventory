@@ -1,4 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+function withOpacity(variableName) {
+  return ({ opacityValue }) => {
+    if (opacityValue !== undefined) {
+      return `hsl(var(${variableName}) / ${opacityValue})`;
+    }
+    return `hsl(var(${variableName}))`;
+  };
+}
+
 export default {
   darkMode: ["class"],
   content: [
@@ -16,53 +25,78 @@ export default {
   		}
   	},
   	extend: {
+  		fontFamily: {
+  			sans: ['Inter', 'sans-serif'],
+  			headings: ['Poppins', 'sans-serif']
+  		},
+  		fontSize: {
+  			'display-xl': ['2.5rem', { lineHeight: '3rem', fontWeight: '700' }],
+  			'display-l': ['2rem', { lineHeight: '2.5rem', fontWeight: '700' }],
+  			'heading-1': ['1.75rem', { lineHeight: '2.25rem', fontWeight: '600' }],
+  			'heading-2': ['1.5rem', { lineHeight: '2rem', fontWeight: '600' }],
+  			'heading-3': ['1.25rem', { lineHeight: '1.75rem', fontWeight: '600' }],
+  			'body-large': ['1rem', { lineHeight: '1.5rem', fontWeight: '400' }],
+  			'body-medium': ['0.875rem', { lineHeight: '1.25rem', fontWeight: '400' }],
+  			'caption': ['0.75rem', { lineHeight: '1rem', fontWeight: '400' }]
+  		},
   		colors: {
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			border: withOpacity('--border'),
+  			input: withOpacity('--input'),
+  			ring: withOpacity('--ring'),
+  			background: withOpacity('--background'),
+  			foreground: withOpacity('--foreground'),
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))',
-  				light: 'hsl(var(--primary-light))',
-  				soft: 'hsl(var(--primary-soft))'
+  				DEFAULT: withOpacity('--primary'),
+  				foreground: withOpacity('--primary-foreground'),
+  				light: withOpacity('--primary-light'),
+  				soft: withOpacity('--primary-soft')
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: withOpacity('--secondary'),
+  				foreground: withOpacity('--secondary-foreground')
   			},
   			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
+  				DEFAULT: withOpacity('--destructive'),
+  				foreground: withOpacity('--destructive-foreground')
   			},
   			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
+  				DEFAULT: withOpacity('--muted'),
+  				foreground: withOpacity('--muted-foreground')
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))',
-  				blue: 'hsl(var(--accent-blue))',
-  				purple: 'hsl(var(--accent-purple))'
+  				DEFAULT: withOpacity('--accent'),
+  				foreground: withOpacity('--accent-foreground'),
+  				blue: withOpacity('--accent-blue'),
+  				purple: withOpacity('--accent-purple')
   			},
   			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
+  				DEFAULT: withOpacity('--popover'),
+  				foreground: withOpacity('--popover-foreground')
   			},
   			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
+  				DEFAULT: withOpacity('--card'),
+  				foreground: withOpacity('--card-foreground')
   			},
-  			success: 'hsl(var(--success))',
-  			warning: 'hsl(var(--warning))',
-  			danger: 'hsl(var(--danger))'
+  			success: withOpacity('--success'),
+  			warning: withOpacity('--warning'),
+  			danger: withOpacity('--danger'),
+  			'dark-green': withOpacity('--dark-green'),
+  			status: {
+  				available: withOpacity('--status-available'),
+  				held: withOpacity('--status-held'),
+  				reserved: withOpacity('--status-reserved'),
+  				blocked: withOpacity('--status-blocked'),
+  				sold: withOpacity('--status-sold')
+  			}
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)',
   			card: 'var(--radius-card)',
+  			'project-card': 'var(--radius-project-card)',
+  			'hero-card': 'var(--radius-hero-card)',
+  			'bottom-sheet': 'var(--radius-bottom-sheet)',
   			button: 'var(--radius-button)',
   			input: 'var(--radius-input)',
   			modal: 'var(--radius-modal)'

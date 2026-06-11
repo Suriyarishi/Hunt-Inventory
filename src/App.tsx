@@ -47,6 +47,7 @@ import NotificationHubPage from './modules/notifications/pages/NotificationHubPa
 // Profile Module
 import ProfileHubPage from './modules/profile/pages/ProfileHubPage';
 import SecuritySettingsPage from './modules/profile/pages/SecuritySettingsPage';
+import InsightsPage from './modules/dashboard/pages/InsightsPage';
 
 // Auth Module
 import WelcomePage from './modules/auth/pages/WelcomePage';
@@ -97,9 +98,11 @@ function App() {
             <Route element={<DashboardLayout />}>
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/inventory" element={<InventoryHomePage />} />
+              <Route path="/holds" element={<HoldHubPage />} />
+              <Route path="/insights" element={<InsightsPage />} />
+              <Route path="/profile" element={<ProfileHubPage />} />
               <Route path="/crm" element={<CrmHomePage />} />
               <Route path="/notifications" element={<NotificationHubPage />} />
-              <Route path="/profile" element={<ProfileHubPage />} />
             </Route>
             
             {/* Full Screen Drill-down Views (No Bottom Nav) */}
@@ -113,7 +116,6 @@ function App() {
             <Route path="/clients/:id" element={<ClientProfilePage />} />
             <Route path="/visits" element={<VisitCalendarPage />} />
             <Route path="/visits/:id/active" element={<VisitActivePage />} />
-            <Route path="/holds" element={<HoldHubPage />} />
             <Route path="/holds/:id" element={<HoldDetailPage />} />
             <Route path="/bookings" element={<BookingHubPage />} />
             <Route path="/bookings/new" element={<BookingWizardPage />} />
@@ -124,6 +126,8 @@ function App() {
             <Route path="/profile/security" element={<SecuritySettingsPage />} />
           </Routes>
             </div>{/* end app-content */}
+            {/* Portal root inside bezel */}
+            <div id="bezel-portal-root" className="absolute inset-0 pointer-events-none z-[100] overflow-hidden rounded-[2.5rem]" />
           </div>{/* end screen-bezel */}
         </div>{/* end phone-frame */}
       </div>{/* end outer wrapper */}

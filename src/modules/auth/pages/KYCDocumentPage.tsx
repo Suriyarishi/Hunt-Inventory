@@ -122,7 +122,7 @@ export default function KYCDocumentPage() {
   const handleAttach = () => setAttached(true);
 
   return (
-    <div className="flex-1 flex flex-col bg-[#eef7f2] overflow-y-auto">
+    <div className="flex-1 flex flex-col bg-[#EAF9E7] overflow-y-auto">
       {/* Header */}
       <div className="px-5 pt-6 pb-4">
         <button
@@ -133,10 +133,10 @@ export default function KYCDocumentPage() {
           BACK
         </button>
 
-        <h1 className="text-[22px] font-extrabold text-[#1a1a1a] leading-tight uppercase tracking-tight mb-2">
+        <h1 className="text-[22px] font-extrabold text-[#013237] leading-tight uppercase tracking-tight mb-2">
           {config.title}
         </h1>
-        <p className="text-sm text-[#5a6a62] leading-relaxed">{config.subtitle}</p>
+        <p className="text-sm text-[#013237] leading-relaxed">{config.subtitle}</p>
       </div>
 
       {/* Form */}
@@ -160,7 +160,7 @@ export default function KYCDocumentPage() {
                   updated[i] = e.target.value;
                   setFieldValues(updated);
                 }}
-                className="flex-1 bg-transparent text-sm text-[#1a1a1a] placeholder:text-[#9ca3af] outline-none"
+                className="flex-1 bg-transparent text-sm text-[#013237] placeholder:text-[#9ca3af] outline-none"
               />
             </div>
           );
@@ -171,20 +171,20 @@ export default function KYCDocumentPage() {
           <div
             onClick={() => setAttached(true)}
             className={`bg-white rounded-2xl flex flex-col items-center justify-center py-10 gap-3 shadow-sm border cursor-pointer transition-all ${
-              attached ? 'border-[#19C37D]/60 bg-[#f0fff8]' : 'border-white/80'
+              attached ? 'border-[#4CA771]/60 bg-[#EAF9E7]' : 'border-white/80'
             }`}
           >
             {attached ? (
               <>
-                <CheckCircle2 className="w-14 h-14 text-[#19C37D]" />
-                <p className="font-bold text-[#19C37D] text-sm">Selfie Captured!</p>
+                <CheckCircle2 className="w-14 h-14 text-[#4CA771]" />
+                <p className="font-bold text-[#4CA771] text-sm">Selfie Captured!</p>
               </>
             ) : (
               <>
-                <div className="w-14 h-14 rounded-full bg-[#19C37D] flex items-center justify-center shadow-md">
+                <div className="w-14 h-14 rounded-full bg-[#4CA771] flex items-center justify-center shadow-md">
                   <Camera className="w-7 h-7 text-white" />
                 </div>
-                <p className="font-bold text-[#1a1a1a] text-sm text-center">Tap to Open Camera</p>
+                <p className="font-bold text-[#013237] text-sm text-center">Tap to Open Camera</p>
                 <p className="text-xs text-[#9ca3af] text-center">Ensure good lighting & face clearly visible</p>
               </>
             )}
@@ -196,21 +196,21 @@ export default function KYCDocumentPage() {
           <div
             onClick={handleAttach}
             className={`bg-white rounded-2xl flex flex-col items-center justify-center py-8 gap-2 shadow-sm border cursor-pointer transition-all ${
-              attached ? 'border-[#19C37D]/60 bg-[#f0fff8]' : 'border-white/80'
+              attached ? 'border-[#4CA771]/60 bg-[#EAF9E7]' : 'border-white/80'
             }`}
           >
             {attached ? (
               <>
-                <CheckCircle2 className="w-12 h-12 text-[#19C37D]" />
-                <p className="font-bold text-[#19C37D] text-sm">File Attached!</p>
+                <CheckCircle2 className="w-12 h-12 text-[#4CA771]" />
+                <p className="font-bold text-[#4CA771] text-sm">File Attached!</p>
                 <p className="text-xs text-[#9ca3af]">{config.attachmentLabel}</p>
               </>
             ) : (
               <>
-                <div className="w-12 h-12 rounded-full bg-[#19C37D] flex items-center justify-center shadow-md">
+                <div className="w-12 h-12 rounded-full bg-[#4CA771] flex items-center justify-center shadow-md">
                   <Plus className="w-7 h-7 text-white" strokeWidth={2.5} />
                 </div>
-                <p className="font-bold text-[#1a1a1a] text-sm mt-1">
+                <p className="font-bold text-[#013237] text-sm mt-1">
                   Attachment: {config.attachmentLabel}
                 </p>
                 <p className="text-xs text-[#9ca3af]">Tap to simulate file capture or local folder upload</p>
@@ -223,15 +223,15 @@ export default function KYCDocumentPage() {
       {/* CTA Button */}
       <div className="px-5 py-6 mt-auto">
         {submitted ? (
-          <div className="w-full h-14 rounded-full bg-[#19C37D]/20 flex items-center justify-center gap-2">
-            <CheckCircle2 className="w-5 h-5 text-[#19C37D]" />
-            <span className="font-bold text-[#19C37D]">Recorded Successfully</span>
+          <div className="w-full h-14 rounded-full bg-[#4CA771]/20 flex items-center justify-center gap-2">
+            <CheckCircle2 className="w-5 h-5 text-[#4CA771]" />
+            <span className="font-bold text-[#4CA771]">Recorded Successfully</span>
           </div>
         ) : (
           <button
             onClick={handleSubmit}
             disabled={submitting}
-            className="w-full h-14 rounded-full bg-[#19C37D] text-white font-bold text-base shadow-lg shadow-[#19C37D]/30 active:scale-95 transition-transform disabled:opacity-70"
+            className="w-full h-14 rounded-full bg-[#4CA771] text-white font-bold text-base shadow-lg shadow-[#4CA771]/30 active:scale-95 transition-transform disabled:opacity-70"
           >
             {submitting ? 'Processing...' : config.ctaLabel}
           </button>
