@@ -58,6 +58,7 @@ import NotificationHubPage from './modules/notifications/pages/NotificationHubPa
 import ProfileHubPage from './modules/profile/pages/ProfileHubPage';
 import SecuritySettingsPage from './modules/profile/pages/SecuritySettingsPage';
 import InsightsPage from './modules/dashboard/pages/InsightsPage';
+import SoldHubPage from './modules/sold/pages/SoldHubPage';
 
 // Auth Module
 import WelcomePage from './modules/auth/pages/WelcomePage';
@@ -109,6 +110,7 @@ function App() {
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/inventory" element={<InventoryHomePage />} />
               <Route path="/holds" element={<HoldHubPage />} />
+              <Route path="/sold" element={<SoldHubPage />} />
               <Route path="/insights" element={<InsightsPage />} />
               <Route path="/profile" element={<ProfileHubPage />} />
               <Route path="/crm" element={<CrmHomePage />} />
