@@ -28,6 +28,16 @@ import VisitActivePage from './modules/visits/pages/VisitActivePage';
 // Hold Module
 import HoldHubPage from './modules/holds/pages/HoldHubPage';
 import HoldDetailPage from './modules/holds/pages/HoldDetailPage';
+import HoldWizardPage from './modules/holds/pages/HoldWizardPage';
+import HoldSuccessPage from './modules/holds/pages/HoldSuccessPage';
+import ActiveHoldsPage from './modules/holds/pages/ActiveHoldsPage';
+import ExpiringHoldsPage from './modules/holds/pages/ExpiringHoldsPage';
+import HoldExtensionPage from './modules/holds/pages/HoldExtensionPage';
+import HoldReleasePage from './modules/holds/pages/HoldReleasePage';
+import WaitlistPage from './modules/holds/pages/WaitlistPage';
+import HoldHistoryPage from './modules/holds/pages/HoldHistoryPage';
+import HoldAnalyticsPage from './modules/holds/pages/HoldAnalyticsPage';
+import HoldNotificationsPage from './modules/holds/pages/HoldNotificationsPage';
 
 // Booking Module
 import BookingHubPage from './modules/bookings/pages/BookingHubPage';
@@ -116,6 +126,16 @@ function App() {
             <Route path="/clients/:id" element={<ClientProfilePage />} />
             <Route path="/visits" element={<VisitCalendarPage />} />
             <Route path="/visits/:id/active" element={<VisitActivePage />} />
+            <Route path="/holds/new" element={<HoldWizardPage />} />
+            <Route path="/holds/success" element={<HoldSuccessPage />} />
+            <Route path="/holds/active" element={<ActiveHoldsPage />} />
+            <Route path="/holds/expiring" element={<ExpiringHoldsPage />} />
+            <Route path="/holds/waitlist" element={<WaitlistPage />} />
+            <Route path="/holds/history" element={<HoldHistoryPage />} />
+            <Route path="/holds/analytics" element={<HoldAnalyticsPage />} />
+            <Route path="/holds/notifications" element={<HoldNotificationsPage />} />
+            <Route path="/holds/:id/extend" element={<HoldExtensionPage />} />
+            <Route path="/holds/:id/release" element={<HoldReleasePage />} />
             <Route path="/holds/:id" element={<HoldDetailPage />} />
             <Route path="/bookings" element={<BookingHubPage />} />
             <Route path="/bookings/new" element={<BookingWizardPage />} />

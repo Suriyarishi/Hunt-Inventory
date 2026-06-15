@@ -20,6 +20,7 @@ export interface Project {
   priceRange: string;
   availableUnits: number;
   totalUnits: number;
+  bhkTypes: string;
 }
 
 export interface Unit {
