@@ -42,6 +42,7 @@ import HoldNotificationsPage from './modules/holds/pages/HoldNotificationsPage';
 // Booking Module
 import BookingHubPage from './modules/bookings/pages/BookingHubPage';
 import BookingWizardPage from './modules/bookings/pages/BookingWizardPage';
+import BookingDetailPage from './modules/bookings/pages/BookingDetailPage';
 
 // Wallet Module
 import WalletHubPage from './modules/wallet/pages/WalletHubPage';
@@ -59,6 +60,9 @@ import ProfileHubPage from './modules/profile/pages/ProfileHubPage';
 import SecuritySettingsPage from './modules/profile/pages/SecuritySettingsPage';
 import InsightsPage from './modules/dashboard/pages/InsightsPage';
 import SoldHubPage from './modules/sold/pages/SoldHubPage';
+import SoldDetailPage from './modules/sold/pages/SoldDetailPage';
+import SoldListingsPage from './modules/sold/pages/SoldListingsPage';
+import SoldAnalyticsPage from './modules/sold/pages/SoldAnalyticsPage';
 
 // Auth Module
 import WelcomePage from './modules/auth/pages/WelcomePage';
@@ -141,6 +145,10 @@ function App() {
             <Route path="/holds/:id" element={<HoldDetailPage />} />
             <Route path="/bookings" element={<BookingHubPage />} />
             <Route path="/bookings/new" element={<BookingWizardPage />} />
+            <Route path="/bookings/:id" element={<BookingDetailPage />} />
+            <Route path="/sold/listings" element={<SoldListingsPage />} />
+            <Route path="/sold/analytics" element={<SoldAnalyticsPage />} />
+            <Route path="/sold/:id" element={<SoldDetailPage />} />
             <Route path="/wallet" element={<WalletHubPage />} />
             <Route path="/wallet/commission/:id" element={<CommissionDetailPage />} />
             <Route path="/team" element={<TeamHubPage />} />
@@ -158,4 +166,3 @@ function App() {
 }
 
 export default App;
-

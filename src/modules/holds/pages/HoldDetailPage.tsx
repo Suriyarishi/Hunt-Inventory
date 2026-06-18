@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { mockHolds, mockHoldHistory } from '../constants/mockData';
 import {
   ArrowLeft, MoreVertical, ShieldCheck, AlertCircle,
-  CalendarClock, Unlock, TrendingUp, Users, Clock
+  CalendarClock, Unlock, TrendingUp, Users
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { HoldStatusBadge } from '../components/HoldStatusBadge';
@@ -297,7 +297,7 @@ export default function HoldDetailPage() {
         <Button
           className="w-full h-13 rounded-button font-bold text-base shadow-lg gap-2 py-3.5"
           disabled={!canConvert}
-          onClick={() => navigate('/bookings/new')}
+          onClick={() => navigate('/bookings/new', { state: { holdId: hold.id } })}
         >
           <TrendingUp className="w-5 h-5" /> Convert to Booking
         </Button>

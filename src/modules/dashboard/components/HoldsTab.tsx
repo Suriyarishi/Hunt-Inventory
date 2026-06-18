@@ -69,9 +69,9 @@ export function HoldsTab() {
               <div className="flex items-center justify-between border-t border-border/30 pt-3">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-700">
-                    {hold.leadName.charAt(0)}
+                    {hold.clientName.charAt(0)}
                   </div>
-                  <span className="text-xs font-semibold text-foreground">{hold.leadName}</span>
+                  <span className="text-xs font-semibold text-foreground">{hold.clientName}</span>
                 </div>
                 
                 {/* Micro Actions */}

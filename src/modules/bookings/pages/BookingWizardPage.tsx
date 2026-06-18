@@ -1,14 +1,18 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, CheckCircle2, User, FileText, IndianRupee, UploadCloud, ShieldCheck } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ArrowLeft, BadgeCheck, CheckCircle2, User, FileText, IndianRupee, UploadCloud, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { mockHolds } from '@/modules/holds/constants/mockData';
 
 export default function BookingWizardPage() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const state = location.state as { holdId?: string } | null;
+  const selectedHold = mockHolds.find((hold) => hold.id === state?.holdId);
   const [step, setStep] = useState('eoi');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -28,22 +32,29 @@ export default function BookingWizardPage() {
          <div className="w-24 h-24 bg-success/20 rounded-full flex items-center justify-center mb-6">
             <CheckCircle2 className="w-12 h-12 text-success" />
          </div>
-         <h1 className="text-3xl font-bold text-foreground mb-2">Booking Submitted!</h1>
-         <p className="text-muted-foreground mb-8">The application has been sent for CRM verification and Builder approval.</p>
+         <h1 className="text-3xl font-bold text-foreground mb-2">Sale Confirmed!</h1>
+         <p className="text-muted-foreground mb-8">Booking, documents, audit trail, and sold record are now linked.</p>
          
          <Card className="p-4 rounded-card border border-border/50 bg-secondary/30 w-full mb-8 text-left space-y-2">
            <div className="flex justify-between text-sm">
              <span className="text-muted-foreground">Application ID</span>
-             <span className="font-bold">APP-8842-1X</span>
+             <span className="font-bold">B-001</span>
            </div>
            <div className="flex justify-between text-sm">
              <span className="text-muted-foreground">Unit</span>
-             <span className="font-bold">A-1402, Skyline</span>
+             <span className="font-bold">{selectedHold ? `${selectedHold.unitNumber}, ${selectedHold.projectName}` : 'A-1402, Skyline'}</span>
+           </div>
+           <div className="flex justify-between text-sm">
+             <span className="text-muted-foreground">Sold Deal</span>
+             <span className="font-bold">S-001</span>
            </div>
          </Card>
 
-         <Button className="w-full h-14 rounded-button text-lg font-bold shadow-lg" onClick={() => navigate('/bookings')}>
-           Go to Booking Hub
+         <Button className="w-full h-14 rounded-button text-lg font-bold shadow-lg" onClick={() => navigate('/sold/S-001')}>
+           View Sold Deal
+         </Button>
+         <Button variant="outline" className="w-full h-12 rounded-button font-bold mt-3" onClick={() => navigate('/bookings/B-001')}>
+           View Booking
          </Button>
       </div>
     );
@@ -60,6 +71,18 @@ export default function BookingWizardPage() {
       </div>
 
       <div className="p-4 flex-1 animate-slide-up-fade">
+         {selectedHold && (
+           <Card className="p-4 rounded-card border-none shadow-xs bg-primary/5 mb-4">
+             <div className="flex items-start justify-between gap-3">
+               <div>
+                 <p className="text-[10px] uppercase tracking-wider text-primary font-bold">Converted from hold</p>
+                 <h2 className="font-bold text-foreground mt-1">{selectedHold.unitNumber} - {selectedHold.projectName}</h2>
+                 <p className="text-xs text-muted-foreground mt-1">{selectedHold.clientName} - token {selectedHold.tokenAmount}</p>
+               </div>
+               <BadgeCheck className="w-5 h-5 text-primary shrink-0" />
+             </div>
+           </Card>
+         )}
          <Accordion type="single" value={step} onValueChange={setStep} className="w-full space-y-4">
             
             {/* Step 1: EOI & Token */}
@@ -245,7 +268,17 @@ export default function BookingWizardPage() {
                </AccordionTrigger>
                <AccordionContent className="pt-2 pb-4 space-y-4">
                   <Card className="p-4 bg-secondary/30 border-none space-y-3">
-                     <p className="text-xs text-muted-foreground text-center">Please verify all details before submitting. Changes after submission require CRM approval.</p>
+                     <p className="text-xs text-muted-foreground text-center">Confirming marks the unit as sold, creates a sold record, adds audit history, and triggers wallet commission.</p>
+                     <div className="grid grid-cols-2 gap-2 text-xs">
+                       <div className="bg-background rounded-xl p-3">
+                         <p className="text-muted-foreground">Unit</p>
+                         <p className="font-bold">{selectedHold?.unitNumber || 'A-1402'}</p>
+                       </div>
+                       <div className="bg-background rounded-xl p-3">
+                         <p className="text-muted-foreground">Client</p>
+                         <p className="font-bold">{selectedHold?.clientName || 'Vikram Malhotra'}</p>
+                       </div>
+                     </div>
                   </Card>
                   
                   <Button 
@@ -253,7 +286,7 @@ export default function BookingWizardPage() {
                     onClick={handleSubmit}
                     disabled={loading}
                   >
-                    {loading ? 'Submitting...' : 'Submit Booking'}
+                    {loading ? 'Marking sold...' : 'Confirm and Mark Sold'}
                   </Button>
                </AccordionContent>
             </AccordionItem>

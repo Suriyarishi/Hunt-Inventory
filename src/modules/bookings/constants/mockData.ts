@@ -1,37 +1,96 @@
-import type { BookingApplication } from '../types';
+import type { AuditEvent, BookingApplication, BookingDocument } from '../types';
 
 export const mockBookings: BookingApplication[] = [
   {
     id: 'B-001',
     unitNumber: 'A-1402',
+    unitId: 'U-1402',
     projectId: 'P-1',
     projectName: 'Skyline Residences',
+    holdId: 'H-001',
+    clientId: 'C-001',
     primaryApplicant: 'Vikram Malhotra',
+    phone: '+91 98200 11223',
+    email: 'vikram.m@wealthcorp.in',
     bookingDate: '2026-06-05T10:00:00Z',
     status: 'Pending KYC',
-    tokenAmount: '₹5,00,000',
-    totalValue: '₹4.2 Cr'
+    tokenAmount: '\u20b95,00,000',
+    totalValue: '\u20b94.2 Cr',
+    kycStatus: 'Pending',
+    documentStatus: 'Pending',
+    paymentStatus: 'Verified',
+    builderApprovalStatus: 'Pending',
+    paymentMode: 'NEFT / RTGS',
+    paymentReference: 'UTR-8842-1X',
   },
   {
     id: 'B-002',
     unitNumber: 'B-2101',
+    unitId: 'U-2101',
     projectId: 'P-2',
     projectName: 'Zenith Towers',
+    holdId: 'H-002',
+    clientId: 'C-002',
     primaryApplicant: 'Ananya Singh',
+    phone: '+91 98200 44556',
+    email: 'ananya.s@example.com',
     bookingDate: '2026-06-04T14:30:00Z',
     status: 'Under Review',
-    tokenAmount: '₹2,00,000',
-    totalValue: '₹4.3 Cr'
+    tokenAmount: '\u20b92,00,000',
+    totalValue: '\u20b94.3 Cr',
+    kycStatus: 'Verified',
+    documentStatus: 'Verified',
+    paymentStatus: 'Pending',
+    builderApprovalStatus: 'Pending',
+    paymentMode: 'Cheque',
+    paymentReference: 'CHQ-482119',
   },
   {
     id: 'B-003',
     unitNumber: 'C-805',
+    unitId: 'U-805',
     projectId: 'P-3',
     projectName: 'Oasis Greens',
+    holdId: 'H-004',
+    clientId: 'C-002',
     primaryApplicant: 'Rajesh Kumar',
+    phone: '+91 98200 77889',
+    email: 'rajesh.k@example.com',
     bookingDate: '2026-05-20T09:00:00Z',
-    status: 'Confirmed',
-    tokenAmount: '₹5,00,000',
-    totalValue: '₹2.8 Cr'
-  }
+    status: 'Sold',
+    tokenAmount: '\u20b95,00,000',
+    totalValue: '\u20b92.8 Cr',
+    kycStatus: 'Verified',
+    documentStatus: 'Verified',
+    paymentStatus: 'Verified',
+    builderApprovalStatus: 'Verified',
+    paymentMode: 'NEFT / RTGS',
+    paymentReference: 'UTR-8842-1X',
+    soldDealId: 'S-001',
+    commissionTransactionId: 'TXN-9004',
+  },
 ];
+
+export const mockBookingDocuments: Record<string, BookingDocument[]> = {
+  'B-001': [
+    { id: 'BD-1', bookingId: 'B-001', title: 'PAN Card', type: 'KYC', status: 'Uploaded', uploadedAt: '2026-06-05T10:05:00Z' },
+    { id: 'BD-2', bookingId: 'B-001', title: 'Token receipt', type: 'Token Receipt', status: 'Uploaded', uploadedAt: '2026-06-05T10:08:00Z' },
+    { id: 'BD-3', bookingId: 'B-001', title: 'Builder booking form', type: 'Builder Form', status: 'Pending', uploadedAt: '2026-06-05T10:10:00Z' },
+  ],
+  'B-003': [
+    { id: 'BD-4', bookingId: 'B-003', title: 'KYC bundle', type: 'KYC', status: 'Uploaded', uploadedAt: '2026-05-20T09:10:00Z' },
+    { id: 'BD-5', bookingId: 'B-003', title: 'Token receipt', type: 'Token Receipt', status: 'Uploaded', uploadedAt: '2026-05-20T09:15:00Z' },
+    { id: 'BD-6', bookingId: 'B-003', title: 'Sale agreement', type: 'Agreement', status: 'Generated', uploadedAt: '2026-05-20T10:30:00Z' },
+  ],
+};
+
+export const mockBookingAudit: Record<string, AuditEvent[]> = {
+  'B-001': [
+    { id: 'AUD-B-001-1', entityType: 'Booking', entityId: 'B-001', action: 'Booking application created', actor: 'Arjun Mehta', timestamp: '2026-06-05T10:00:00Z' },
+    { id: 'AUD-B-001-2', entityType: 'Booking', entityId: 'B-001', action: 'Token payment verified', actor: 'Finance Desk', timestamp: '2026-06-05T10:20:00Z' },
+  ],
+  'B-003': [
+    { id: 'AUD-B-003-1', entityType: 'Booking', entityId: 'B-003', action: 'Builder approved booking', actor: 'Oasis Group', timestamp: '2026-05-20T09:45:00Z' },
+    { id: 'AUD-B-003-2', entityType: 'Sold', entityId: 'S-001', action: 'Confirmed and marked sold', actor: 'Arjun Mehta', timestamp: '2026-05-20T10:00:00Z' },
+  ],
+};

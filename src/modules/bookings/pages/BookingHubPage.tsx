@@ -9,12 +9,13 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 export default function BookingHubPage() {
   const navigate = useNavigate();
 
-  const activeBookings = mockBookings.filter(b => b.status !== 'Confirmed' && b.status !== 'Rejected');
-  const historyBookings = mockBookings.filter(b => b.status === 'Confirmed' || b.status === 'Rejected');
+  const activeBookings = mockBookings.filter(b => !['Confirmed', 'Rejected', 'Sold'].includes(b.status));
+  const historyBookings = mockBookings.filter(b => ['Confirmed', 'Rejected', 'Sold'].includes(b.status));
 
   const getStatusIcon = (status: string) => {
     switch(status) {
       case 'Confirmed': return <CheckCircle2 className="w-4 h-4 text-success" />;
+      case 'Sold': return <CheckCircle2 className="w-4 h-4 text-success" />;
       case 'Pending KYC': return <AlertCircle className="w-4 h-4 text-warning" />;
       case 'Under Review': return <Clock className="w-4 h-4 text-accent-blue" />;
       default: return null;
@@ -24,6 +25,7 @@ export default function BookingHubPage() {
   const getStatusColor = (status: string) => {
     switch(status) {
       case 'Confirmed': return 'bg-success/10 text-success';
+      case 'Sold': return 'bg-success/10 text-success';
       case 'Pending KYC': return 'bg-warning/10 text-warning';
       case 'Under Review': return 'bg-accent-blue/10 text-accent-blue';
       case 'Rejected': return 'bg-destructive/10 text-destructive';
@@ -77,7 +79,11 @@ export default function BookingHubPage() {
                    </div>
                  </div>
 
-                 <Button variant="ghost" className="w-full justify-between h-10 text-xs font-semibold hover:bg-secondary/50">
+                 <Button
+                  variant="ghost"
+                  className="w-full justify-between h-10 text-xs font-semibold hover:bg-secondary/50"
+                  onClick={() => navigate(`/bookings/${booking.id}`)}
+                >
                     View Application <ChevronRight className="w-4 h-4" />
                  </Button>
               </Card>
@@ -87,7 +93,7 @@ export default function BookingHubPage() {
           {/* History Tab */}
           <TabsContent value="history" className="space-y-4 animate-slide-up-fade">
             {historyBookings.map(booking => (
-              <Card key={booking.id} className="p-4 rounded-card border-none shadow-xs bg-card opacity-80">
+              <Card key={booking.id} className="p-4 rounded-card border-none shadow-xs bg-card opacity-80" onClick={() => navigate(`/bookings/${booking.id}`)}>
                  <div className="flex justify-between items-start mb-3">
                    <div>
                      <h3 className="font-bold text-foreground text-lg">{booking.unitNumber}</h3>
