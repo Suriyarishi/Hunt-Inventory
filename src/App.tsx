@@ -43,6 +43,12 @@ import HoldNotificationsPage from './modules/holds/pages/HoldNotificationsPage';
 import BookingHubPage from './modules/bookings/pages/BookingHubPage';
 import BookingWizardPage from './modules/bookings/pages/BookingWizardPage';
 import BookingDetailPage from './modules/bookings/pages/BookingDetailPage';
+import BookingTimelinePage from './modules/bookings/pages/BookingTimelinePage';
+import BookingReceiptPage from './modules/bookings/pages/BookingReceiptPage';
+import AgreementStatusPage from './modules/bookings/pages/AgreementStatusPage';
+import RegistrationStatusPage from './modules/bookings/pages/RegistrationStatusPage';
+import ReversalRequestPage from './modules/bookings/pages/ReversalRequestPage';
+import BookingAnalyticsPage from './modules/bookings/pages/BookingAnalyticsPage';
 
 // Wallet Module
 import WalletHubPage from './modules/wallet/pages/WalletHubPage';
@@ -145,7 +151,13 @@ function App() {
             <Route path="/holds/:id" element={<HoldDetailPage />} />
             <Route path="/bookings" element={<BookingHubPage />} />
             <Route path="/bookings/new" element={<BookingWizardPage />} />
+            <Route path="/bookings/analytics" element={<BookingAnalyticsPage />} />
             <Route path="/bookings/:id" element={<BookingDetailPage />} />
+            <Route path="/bookings/:id/timeline" element={<BookingTimelinePage />} />
+            <Route path="/bookings/:id/receipt" element={<BookingReceiptPage />} />
+            <Route path="/bookings/:id/agreement" element={<AgreementStatusPage />} />
+            <Route path="/bookings/:id/registration" element={<RegistrationStatusPage />} />
+            <Route path="/bookings/:id/reversal" element={<ReversalRequestPage />} />
             <Route path="/sold/listings" element={<SoldListingsPage />} />
             <Route path="/sold/analytics" element={<SoldAnalyticsPage />} />
             <Route path="/sold/:id" element={<SoldDetailPage />} />
